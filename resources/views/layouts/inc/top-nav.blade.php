@@ -25,14 +25,19 @@
             <li>
                 <a href="#">Dự án <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-list">
-                    <li><a  href="#">Biệt thự</a></li>
-                    <li><a  href="#">Căn hộ</a></li>
-                    <li><a  href="#">Nhà phố</a></li>
-                    <li><a  href="#">Văn phòng</a></li>
+                    @foreach(\App\Models\Project::whereShow('Y')->get() as $project)
+                    <li><a  href="{{route('web.project.detail', [$project->slug, 'du-an'])}}">{{$project->title}}</a></li>
+                    @endforeach
                 </ul>
             
             </li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="#">Blog</a>
+                <ul class="dropdown-list">
+                    @foreach(\App\Models\Article::whereShow('Y')->get() as $article)
+                    <li><a  href="{{route('web.article.detail', [$article->slug])}}">{{$article->title}}</a></li>
+                    @endforeach
+                </ul>
+            </li>
             <li><a href="#">Liên hệ</a></li>
         </ul>
     </div>

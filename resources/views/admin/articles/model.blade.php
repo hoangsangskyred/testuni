@@ -30,7 +30,7 @@
                     <button type="button" id="lfm" data-input="avatarPath" class="btn btn-outline-secondary">
                         <i class="fas fa-photo"></i> Chọn hình
                     </button>
-                    <input id="avatarPath" class="form-control" type="text" name="avatarPath" value="{{old('avatarPath', $needle->avatar_path)}}" placeholder="Chọn hình đại diện cho bài viết">
+                    <input id="avatarPath" class="form-control" type="text" name="avatar" value="{{old('avatar', $needle->avatar)}}" placeholder="Chọn hình đại diện cho bài viết">
                 </div>
             </div>
             <div class="col-md-4">

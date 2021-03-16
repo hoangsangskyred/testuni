@@ -1,5 +1,5 @@
 @extends('layouts.web')
-@push('page-title', 'Dịch vụ')
+@push('page-title', 'Dự án')
 @section('page-content')
     <div class="inner-heading">
         <div class="container">
@@ -21,25 +21,24 @@
                     <div class="col-lg-4">
                         <div class="sidebar-widgets">
                             <div class="widget widget-categories">
-                                <h4 class="widget-title"><span class="light-text">Các dịch vụ khác</span></h4>
+                                <h4 class="widget-title"><span class="light-text">Các dự án khác</span></h4>
                                 <ul class="list-group list-unstyled">
-                                    @foreach($otherServices as $otherService)
-                                        <li><a href="{{route('web.service.detail', [$otherService->slug, 'dich-vu'])}}">{{$otherService->title}}</a></li>
+                                    @foreach($otherProjects as $otherProject )
+                                        <li><a href="{{route('web.project.detail', [$otherProject->slug, 'du-an'])}}">{{$otherProject->title}}</a></li>
                                     @endforeach
-                                  
                                 </ul>
                             </div>
                             <!-- .widget end -->
 
                             <div class="widget">
-                                <h4 class="widget-title"><span class="light-text">Dịch Vụ</span></h4>
+                                <h4 class="widget-title"><span class="light-text">Dự án</span></h4>
                                 <div class="widget-posts">
-                                    @foreach(\App\Models\Service::where('show','Y')->limit(5)->get() as $service)
+                                    @foreach(\App\Models\Project::where('show','Y')->limit(5)->get() as $project)
                                         <!-- .widget-post START -->
                                         <div class="widget-post media">
-                                            <img src="{{$service->avatar_path}}" width="50%">
-                                            <div class="media-body"><span class="post-meta-date"> <a href="#"> Ngày {{$service->created_at->format('d-m-Y')}}</a> </span>
-                                                <h5 class="entry-title"><a href="{{route('web.service.detail', ['slug'=>$service->slug,'dich-vu'])}}">{{$service->title}}</a></h5>
+                                            <img src="{{$project->avatar}}">
+                                            <div class="media-body"><span class="post-meta-date"> <a href="#"> Ngày {{$project->created_at->format('d-m-Y')}}</a> </span>
+                                                <h5 class="entry-title"><a href="{{route('web.project.detail', ['slug'=>$project->slug,'du-an'])}}">{{$project->title}}</a></h5>
                                             </div>
                                         </div>
                                         <!-- .widget-post END -->

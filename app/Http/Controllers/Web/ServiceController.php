@@ -15,10 +15,12 @@ class ServiceController extends Controller
         return view('web.services.all', compact('list'));
     }
 
-    public function show($slug, $service_prefix)
+    public function detail($slug)
     {
         $needle = Service::whereSlug($slug)->whereShow('Y')->first();
+
         $otherServices = Service::where('id','<>',$needle->id)->whereShow('Y')->get();
+
         return view('web.services.detail', compact('needle', 'otherServices'));
     }
 

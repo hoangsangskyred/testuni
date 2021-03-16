@@ -301,8 +301,7 @@ body.cke_editable {padding: 1rem !important;}
 @media screen  and (max-width:1200px)
 {
      
-}   
-}
+
 }
 @media screen and (max-width: 1024px){
     .aboutImage .text-block
@@ -530,6 +529,9 @@ nav ul.dropdown-list {
     overflow-y: hidden;
     transition: opacity 0.5s ease-in-out;
     padding: 0;
+    display: none ;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
 .mobile .nav-wrapper ul li:hover .dropdown-list {
@@ -546,12 +548,18 @@ nav ul.dropdown-list {
     padding: 0px 10px; 
 }
 
+.mobile .nav-wrapper ul
+{
+    width: 100%;
+    overflow: auto;
+}
 .mobile .nav-wrapper ul.dropdown-list li a:hover
 {
     color: var(--primary);
 }
 .mobile .nav-wrapper ul.dropdown-list li a {
     color: var(--dark-gray);
+    
 }
 
 
