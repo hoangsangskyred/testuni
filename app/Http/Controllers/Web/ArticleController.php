@@ -21,12 +21,16 @@ class ArticleController extends Controller
         }
         $needle = Article::with('category')->where('article_category_id',$articleCatory->id)->whereShow('Y')->paginate(6);
         
-        $articleCatories = Article::with('category')->whereShow('Y')->get();
+        $articleCategories = ArticleCategory::where('id','<>',$articleCatory->id)->whereShow('Y')->get();
 
     /*$otherArticles = Article::with('category')->where('article_category_id','<>',$needle->id)->whereShow('Y')->limit(10)->get();*/
     
-        return view('web.articles.all', compact('needle','articleCatory','articleCatories'));
+        return view('web.articles.all', compact('needle','articleCatory','articleCategories'));
 
+    }
+    public function detail($slug)
+    {
+        return view('web.articles.detail');
     }
  
 }

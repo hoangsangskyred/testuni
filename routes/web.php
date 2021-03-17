@@ -24,8 +24,11 @@ Route::name('web.')->group(function () {
         ->name('service.detail');
     Route::get('/{slug}-blogs.html', [ArticleController::class, 'category'])
         ->where(['slug' => '(.*)', 'Blogs' => '(Blogs|blogs)'])
-        ->name('article.detail');    
-    
+        ->name('article.detail'); 
+
+    Route::get('/{slug}-detail.html', [ArticleController::class, 'detail'])
+        ->where(['slug' => '(.*)', 'Blogs' => '(detail|detail)'])
+        ->name('article.show');
     /*    Route::get('/{slug}-blog.html', [ArticleController::class, 'index'])
         ->where(['slug' => '(.*)'])
         ->name('article.show');*/
