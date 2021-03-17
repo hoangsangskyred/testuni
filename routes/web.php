@@ -22,13 +22,13 @@ Route::name('web.')->group(function () {
     Route::get('/{slug}-{service}.html', [ServiceController::class, 'show'])
         ->where(['slug' => '(.*)', 'service' => '(service|dich-vu)'])
         ->name('service.detail');
+
     Route::get('/{slug}-blogs.html', [ArticleController::class, 'category'])
         ->where(['slug' => '(.*)', 'Blogs' => '(Blogs|blogs)'])
-        ->name('article.detail'); 
-
-    Route::get('/{slug}-detail.html', [ArticleController::class, 'detail'])
-        ->where(['slug' => '(.*)', 'Blogs' => '(detail|detail)'])
         ->name('article.show');
+    Route::get('/{slug}-detail.html', [ArticleController::class, 'detail'])
+        ->where(['slug' => '(.*)', 'detail' => '(detail|detail)'])
+        ->name('article.detail');     
     /*    Route::get('/{slug}-blog.html', [ArticleController::class, 'index'])
         ->where(['slug' => '(.*)'])
         ->name('article.show');*/

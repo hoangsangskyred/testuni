@@ -41,7 +41,8 @@ class ArticleRequest extends FormRequest
     {
         $this->merge([
             'show' => $this->has('show') ? 'Y' : 'N',
-            'title' => Str::title($this->title)
+            'title' => Str::title($this->title),
+            'avatar_path'=>$this->avatar_path ? $this->avatar_path :'/public/img/article-default-avatar.png',
         ]);
     }
 }

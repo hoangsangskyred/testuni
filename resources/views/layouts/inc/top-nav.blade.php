@@ -35,7 +35,7 @@
             <li><a href="#">Blog <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-list">
                     @foreach(\App\Models\ArticleCategory::whereShow('Y')->orderBy('display_name','asc')->get() as $articleCategory)
-                    <li><a  href="{{route('web.article.detail', [$articleCategory->slug])}}">{{$articleCategory->display_name}}</a></li>
+                    <li><a  href="{{route('web.article.show', [$articleCategory->slug])}}">{{$articleCategory->display_name}}</a></li>
                     @endforeach
                 </ul>
             </li>
