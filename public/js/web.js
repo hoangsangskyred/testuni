@@ -44,17 +44,9 @@ function addClassOpen()
         
         window.onload = addRequiredClass
 
-        hamburger.addEventListener('click', function() { 
+        hamburger.addEventListener('click', function(e) { 
                 mobileNav.classList.toggle('open')
-             if(mobileNav.classList.contains('open'))
-             {
-                mobileNav.classList.add('open')
-             }
-            else
-             {
-               mobileNav.classList.remove('open')
-             }
-           
+                
             if(!isActive) {
                 bars[0].style.transform = 'rotate(45deg)'
                 bars[1].style.opacity = '0'
@@ -104,17 +96,6 @@ function addClassOpen()
 
 $(document).ready(function (){
   addClassOpen();
-  stopevent();
 });
 
-function stopevent()
-{
-    var hide = false;
-$('body').on("click", function () {
-    if (hide) {$('.nav-list').removeClass('open');
-         hide = true;}        
-
-});
-
-}
 

@@ -26,20 +26,19 @@
                                     @foreach($otherServices as $otherService)
                                         <li><a href="{{route('web.service.detail', [$otherService->slug, 'dich-vu'])}}">{{$otherService->title}}</a></li>
                                     @endforeach
-                                  
                                 </ul>
                             </div>
                             <!-- .widget end -->
 
                             <div class="widget">
-                                <h4 class="widget-title"><span class="light-text">Dịch Vụ</span></h4>
+                                <h4 class="widget-title"><span class="light-text">Blog</span></h4>
                                 <div class="widget-posts">
-                                    @foreach(\App\Models\Service::where('show','Y')->limit(5)->get() as $service)
+                                    @foreach(\App\Models\Article::where('show','Y')->limit(5)->get() as $article)
                                         <!-- .widget-post START -->
                                         <div class="widget-post media">
-                                            <img src="{{$service->avatar_path}}" width="50%">
-                                            <div class="media-body"><span class="post-meta-date"> <a href="#"> Ngày {{$service->created_at->format('d-m-Y')}}</a> </span>
-                                                <h5 class="entry-title"><a href="{{route('web.service.detail', ['slug'=>$service->slug,'dich-vu'])}}">{{$service->title}}</a></h5>
+                                            <img src="{{$article->avatar}}">
+                                            <div class="media-body"><span class="post-meta-date"> <a href="#"> Ngày {{$article->created_at->format('d-m-Y')}}</a> </span>
+                                                <h5 class="entry-title"><a href="{{route('web.article.detail', ['slug'=>$article->slug])}}">{{$article->title}}</a></h5>
                                             </div>
                                         </div>
                                         <!-- .widget-post END -->

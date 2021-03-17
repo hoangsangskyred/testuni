@@ -14,12 +14,21 @@
             <div class="service-wrap">
                 <div class="row">
                     <div class="col-lg-8">
+                      
                         <div class="text-holder">
                             {!! $needle->content !!}
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="sidebar-widgets">
+                            <div class="widget widget-categories">
+                                <h4 class="widget-title"><span class="light-text">Blog theo chủ đề</span></h4>
+                                <ul class="list-group list-unstyled">
+                                    @foreach($articleCatories as $article)
+                                        <li><a href="#">{{$article->display_name}}</a><span>({{$article->articles->count()}})</span></li>
+                                    @endforeach
+                                </ul>
+                            </div>
                             <div class="widget">
                                 <h4 class="widget-title"><span class="light-text">Blog</span></h4>
                                 <div class="widget-posts">

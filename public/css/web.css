@@ -275,10 +275,13 @@ body.cke_editable {padding: 1rem !important;}
     .welcome-wrap .title h1{
         font-size: 20px;
     }
+    .teamImg
+    {
+        display: none;
+    }
 }
 @media screen and(min-width:576px)
 {
-    
 }
 @media screen and (max-width: 767px)
 {
@@ -296,27 +299,52 @@ body.cke_editable {padding: 1rem !important;}
 {
     width: 100%;
 }
-
-}
-@media screen  and (max-width:1200px)
+.teamImg
 {
-     
-
+    text-align: center;
+    padding: 10px;
 }
+}
+
 @media screen and (max-width: 1024px){
     .aboutImage .text-block
     {
     
     }
+    .col-md-7
+    {
+        width: 100%;
+    }
     .aboutImage .welImg {
         text-align: center;
         margin-top: 20px;
     }
+    .col-sm-6
+    {
+        width: 100%;
+            
+    }
+    .col-sm-6 .teamImg
+    {
+        text-align: center;
+        overflow: hidden;
+    }
+    .service-wrap{
+      
+    }
+    .service-wrap img
+    {
+        text-align: center;
+        overflow: hidden;
+
+
+    }
+    
 } 
 
 @media screen and (max-width:1200px)
 {
-
+ 
 }
 
 
@@ -529,9 +557,6 @@ nav ul.dropdown-list {
     overflow-y: hidden;
     transition: opacity 0.5s ease-in-out;
     padding: 0;
-    display: none ;
-    margin-left: 2px;
-    margin-right: 2px;
 }
 
 .mobile .nav-wrapper ul li:hover .dropdown-list {
@@ -543,23 +568,22 @@ nav ul.dropdown-list {
     margin-left: 0;
     text-align: center;
 }
-.mobile ul.nav-list li ul li
-{
-    padding: 0px 10px; 
-}
-
 .mobile .nav-wrapper ul
 {
     width: 100%;
     overflow: auto;
 }
+.mobile ul.nav-list li ul li
+{
+    padding: 0px 10px; 
+}
+
 .mobile .nav-wrapper ul.dropdown-list li a:hover
 {
     color: var(--primary);
 }
 .mobile .nav-wrapper ul.dropdown-list li a {
     color: var(--dark-gray);
-    
 }
 
 

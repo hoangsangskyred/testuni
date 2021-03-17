@@ -36,8 +36,6 @@ class Project extends Model
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = Str::title($value);
-        //$this->attributes['slug'] = implode('/', [$this->category->null, Str::slug($this->attributes['title'])]);
-        $this->attributes['slug'] = implode('/', array_filter([$this->category->slug, Str::slug($this->attributes['title'])]));
-
+        $this->attributes['slug'] = implode('/', [$this->category->null, Str::slug($this->attributes['title'])]);
     }
 }
