@@ -25,9 +25,8 @@ class Article extends Model
         'show',
         'article_source_link',
     ];
-    protected $attributes  = [
+    protected $attributes = [
         'article_category_id' => 1,
-        'avatar_path' => '/public/img/default-avatar.jpg',
         'title' => null,
         'description' => null,
         'content' => null,

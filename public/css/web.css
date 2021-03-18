@@ -264,7 +264,19 @@ body.cke_editable {padding: 1rem !important;}
     font-size: 14px;
     line-height: 26px;
 }
+/*-------Blogs*/
+.blogArticles img
+{
+    transition: transform .4s;
+    margin: 0 auto;
+}
+.blogArticles img:hover
+{
+    -ms-transform: scale(1.05);
+    -webkit-transform: scale(1.05); 
+    transform: scale(1.05);
 
+}
 /*-----------@media---------------*/
 
 @media screen and(max-width:420px)
@@ -336,10 +348,8 @@ body.cke_editable {padding: 1rem !important;}
     {
         text-align: center;
         overflow: hidden;
-
-
     }
-    
+   
 } 
 
 @media screen and (max-width:1200px)
@@ -423,11 +433,11 @@ nav.mobile::after
 nav ul.dropdown-list {
     list-style-type: none;
     background: var(--smoke);
-    padding: 10px 16px;
+    padding: 5px 16px;
     position: absolute;
     width: max-content; 
-    left: 50%;
-    transform: translateX(-50%);
+    /*left: 50%;
+    transform: translateX(-50%);*/
     display: none;
     z-index: 9999;
 }

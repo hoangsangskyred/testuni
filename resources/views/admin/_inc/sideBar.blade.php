@@ -51,9 +51,9 @@
         <li>
             <a href="{{route('admin.settings.index')}}">Thông tin chung</a>
         </li>
-        <li>
+        <!--li>
             <a href="{{route('admin.customers.index')}}">Khách Hàng</a>
-        </li>
+        </li-->
        
         @role('super-admin')
         <li>

@@ -22,17 +22,15 @@ Route::name('web.')->group(function () {
     Route::get('/{slug}-{service}.html', [ServiceController::class, 'show'])
         ->where(['slug' => '(.*)', 'service' => '(service|dich-vu)'])
         ->name('service.detail');
-
+    Route::get('/{slug}-{project}.html', [ProjectController::class, 'category'])
+        ->where(['slug' => '(.*)', 'project' => 'project|du-an'])
+        ->name('project.show');
     Route::get('/{slug}-blogs.html', [ArticleController::class, 'category'])
         ->where(['slug' => '(.*)', 'Blogs' => '(Blogs|blogs)'])
         ->name('article.show');
     Route::get('/{slug}-detail.html', [ArticleController::class, 'detail'])
         ->where(['slug' => '(.*)', 'detail' => '(detail|detail)'])
-        ->name('article.detail');     
-    /*    Route::get('/{slug}-blog.html', [ArticleController::class, 'index'])
-        ->where(['slug' => '(.*)'])
-        ->name('article.show');*/
-
+        ->name('article.detail'); 
     Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contactUs');
     Route::Post('/contact-us', [ContactUsController::class, 'store'])->name('contactUs');
 });

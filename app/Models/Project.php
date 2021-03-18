@@ -32,10 +32,12 @@ class Project extends Model
         return $this->belongsTo(ProjectCategory::class, 'project_category_id')
             ->withDefault(['display_name' => '-', 'slug' => null]);
     }
-
+    
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = Str::title($value);
-        $this->attributes['slug'] = implode('/', [$this->category->null, Str::slug($this->attributes['title'])]);
+
+        $this->attributes['slug'] = implode('/', array_filter([$this->category->slug, Str::slug($this->attributes['title'])]));
     }
+    
 }
