@@ -14,7 +14,7 @@ class ArticleController extends Controller
     public function category($slug)
     {
         $articleCatory = ArticleCategory::where('slug',$slug)->whereShow('Y')->first();
-
+        
         if($articleCatory==null)
         {
             return abort(404);
@@ -29,7 +29,7 @@ class ArticleController extends Controller
     public function detail($slug)
     {
         $articleCategories = ArticleCategory::all();
-        
+      
         $article = Article::where('slug',$slug)->whereShow('Y')->first();
 
         $needle = Article::with('category')->whereSlug($slug)->whereShow('Y')->first();

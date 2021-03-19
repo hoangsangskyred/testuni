@@ -28,9 +28,8 @@ Route::name('web.')->group(function () {
     Route::get('/{slug}-{detail}.html', [ProjectController::class, 'detail'])
         ->where(['slug' => '(.*)', 'project-detail' => 'project-detail|project-detail'])
         ->name('project.detail'); 
-
-    Route::get('/{slug}-blogs.html', [ArticleController::class, 'category'])
-        ->where(['slug' => '(.*)', 'Blogs' => '(Blogs|blogs)'])
+    Route::get('/{slug}-{blogs}.html', [ArticleController::class, 'category'])
+        ->where(['slug' => '(.*)','blogs'=>'blogs|blogs'])
         ->name('article.show');
     Route::get('/{slug}-detail.html', [ArticleController::class, 'detail'])
         ->where(['slug' => '(.*)', 'detail' => '(detail|detail)'])
