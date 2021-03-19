@@ -19,8 +19,8 @@
                             <div class="col-md-6 my-4 blogArticles px-2">
                                 <div class="card" style="overflow :hidden;">
                                     <img class="card-img-top" src="{{$articles->avatar_path}}" alt=" ">
-                                    <div class="card-body">
-                                      <h5 class="card-title">{{$articles->title}}</h5>
+                                    <div class="card-body" style="height: 230px">
+                                      <a href="{{route('web.article.detail', ['slug'=>$articles->slug])}}"><h5 class="card-title">{!!trim(Str::limit($articles->title,70))!!}</h5></a>
                                       <p class="card-text">{!!trim(Str::limit($articles->content,150))!!}</p>
                                       <a href="{{route('web.article.detail', ['slug'=>$articles->slug])}}" class="btn btn-secondary">Xem Thêm...</a>
                                     </div>

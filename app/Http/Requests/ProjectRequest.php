@@ -42,7 +42,8 @@ class ProjectRequest extends FormRequest
     {
         $this->merge([
             'show' => $this->has('show') ? 'Y' : 'N',
-            'title' => Str::title($this->title)
+            'title' => Str::title($this->title),
+            'folder_path' => Str::substr($this->avatar_path, 0, strrpos($this->avatar_path, '/'))
         ]);
     }
 }

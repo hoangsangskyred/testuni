@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProjectRequest;
 
+
 class ProjectController extends Controller
 {
     use RedirectAfterSubmit;
@@ -32,7 +33,7 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         $this->setRedirectLink($request);
-
+   
         return view($this->view . '.index', ['list' => $this->search($request)])
             ->withController($this);
     }
@@ -48,6 +49,10 @@ class ProjectController extends Controller
     {
         $project = new Project($request->all());
 
+        $files = glob( public_path(str_replace('/public', '', $request->folder_path)) . '/*.jpg');
+
+        $project->photo_count = Count($files);
+
         $project->save();
 
         return redirect()->to( $this->getRedirectLink() )->withSuccess('Lưu dữ liệu thành công!');    
@@ -62,6 +67,10 @@ class ProjectController extends Controller
     public function update(ProjectRequest $request, Project $project)
     {
         $project->update($request->all());
+
+        $files = glob( public_path(str_replace('/public', '', $request->folder_path)) . '/*.jpg');
+
+        $project->photo_count = Count($files);
 
         $project->save();
 

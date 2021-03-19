@@ -22,14 +22,14 @@ class ArticleController extends Controller
         $needle = Article::with('category')->where('article_category_id',$articleCatory->id)->whereShow('Y')->paginate(6);
         
         $articleCategories = ArticleCategory::where('id','<>',$articleCatory->id)->whereShow('Y')->get();
-    
+       
         return view('web.articles.all', compact('needle','articleCatory','articleCategories'));
     }
 
     public function detail($slug)
     {
         $articleCategories = ArticleCategory::all();
-
+        
         $article = Article::where('slug',$slug)->whereShow('Y')->first();
 
         $needle = Article::with('category')->whereSlug($slug)->whereShow('Y')->first();
