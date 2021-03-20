@@ -94,10 +94,14 @@ function addClassOpen()
     }
 }
 
+function switchStyle()
+{
+    
+}
+
 $(document).ready(function (){
   addClassOpen();
+  switchStyle();
 });
-
-
 
 

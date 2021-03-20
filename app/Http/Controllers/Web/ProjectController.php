@@ -9,9 +9,8 @@ use App\Models\Project;
 
 class ProjectController extends Controller
 {
-    public function category($slug)
+    public function category($slug, $type)
     {
-
         $projectCategory = ProjectCategory::where('slug',$slug)->whereShow('Y')->first();
 
         if($projectCategory==null)
@@ -25,19 +24,22 @@ class ProjectController extends Controller
         return view('web.projects.all', compact('needle','projectCategory','projectCategories'));
     }
 
-    public function detail($slug)
+    public function detail($slug, $project)
     {
-         // $fileImageSmall = glob( public_path(str_replace('/public', '', $needleImage->folder_path)) . '/*.jpg');
          $project = Project::where('slug',$slug)->whereShow('Y')->first();
 
          $needle = Project::with('category')->whereSlug($slug)->whereShow('Y')->first();
-         if($needle==null)
-         {
+
+        if ($needle==null)
+        {
             return abort('404');
-         }
-        
+        }
         $projectImages = glob( public_path(str_replace('/public','',$project->folder_path)) . '/*.jpg');
-        
-         return view('web.projects.detail',compact(['project','needle','projectImages']));
+
+        $projectRelation = Project::with('category')->where('project_category_id',$needle->project_category_id)->where('slug','<>',$needle->slug)->where('show','Y')->get();
+
+        $projectCategories = ProjectCategory::where('id','<>',$project->project_category_id)->whereShow('Y')->get();
+
+        return view('web.projects.detail',compact(['project','needle','projectImages','projectRelation','projectCategories']));
     }
 }

@@ -15,29 +15,22 @@
                 <div class="row">
                     <div class="col-lg-8">  
                         <div class="text-holder">
-                            <div class="text-center">
-                                <img src="{{$project->avatar_path}}" width="100%" />
-                            </div>
                             <div class="content">
-                                <h5>{{$project->title}}</h5>
-                                <div>
-                                    {!! $needle->content !!}
-                                </div>
+                              {!! $needle->content !!}
                             </div>
                             <div class="main">
-                            @foreach ($projectImages as $key => $item )
-                            <div class="column">
-                               <img id="{{$key}}" src="{{str_replace([public_path(), '\/'], ['', '/public/'], $item)}}" width="50px" class="slide"/>   
-                           </div>
-                            @endforeach
+                              @foreach ($projectImages as $key => $item )
+                                <div class="column">
+                                  <img id="{{$key}}" src="{{str_replace([public_path(), '\/'], ['', '/public/'], $item)}}" width="50px" class="slide"/>   
+                                </div>
+                              @endforeach
                             </div>
-
                            <div id="slide-modal">
-                            <a id="close" class="slider-button">&times;</a>
-                            <a id="full" class="slider-button">&#10021;</a>
-                            <a id="previous" class="slider-button">&#8249;</a>
-                            <a id="next" class="slider-button">&#8250;</a>
-                            <img id="modal-content" src="" alt="image in slideshow" width="50%" />
+                              <a id="close" class="slider-button">&times;</a>
+                              <a id="full" class="slider-button">&#10021;</a>
+                              <a id="previous" class="slider-button">&#8249;</a>
+                              <a id="next" class="slider-button">&#8250;</a>
+                              <img id="modal-content" src="" alt="image in slideshow" width="50%" />
                           </div>
                         </div>
                         
@@ -46,15 +39,24 @@
                         <div class="sidebar-widgets">
                             <div class="widget widget-categories">
                                 <h4 class="widget-title"><span class="light-text">Dự án liên quan</span></h4>
-                                <ul class="list-group list-unstyled">
-                                   
-                                </ul>
+                                <div class="widget-posts">
+                                  @foreach($projectRelation as $project)
+                                  <div class="widget-post media">
+                                      <a href="{{route('web.project.detail', ['slug'=>$project->slug, 'du-an'])}}"><img src="{{$project->avatar_path}}" width="120px"></a>
+                                      <div class="media-body">
+                                        <h5 class="entry-title"><a href="{{route('web.project.detail', ['slug'=>$project->slug, 'du-an'])}}">{{$project->title}}</a></h5>
+                                      </div>
+                                  </div>    
+                                  @endforeach
+                              </div>
                             </div>
                             <div class="widget">
                                 <h4 class="widget-title"><span class="light-text">Danh mục dự án</span></h4>
-                                <div class="widget-posts">
-                                  
-                                </div>
+                                <ul class="list-group list-unstyled">
+                                  @foreach($projectCategories as $category)
+                                  <li><a href="{{route('web.projectCategory.show', [$category->slug,'danh-muc'])}}">{{$category->display_name}}</a><span>{{$category->projects->where('show','Y')->count()}}</span></li>
+                                  @endforeach
+                              </ul>
                                 
                             </div>
                         </div>
@@ -67,7 +69,7 @@
     <!--Inner Content End-->
 
     <script>
-        (function () {
+    (function () {
   var modal = document.getElementById("slide-modal"),
   slides = document.getElementsByClassName("slide"),
   modalImage = document.getElementById("modal-content"),

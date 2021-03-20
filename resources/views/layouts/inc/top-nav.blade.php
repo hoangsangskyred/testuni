@@ -26,14 +26,14 @@
                 <a href="#">Dự án <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-list">
                     @foreach(\App\Models\ProjectCategory::whereShow('Y')->orderBy('display_name','asc')->get() as $projectCategory)
-                    <li><a  href="{{route('web.project.show', [$projectCategory->slug,'du-an'])}}">{{$projectCategory->display_name}}</a></li>
+                    <li><a  href="{{route('web.projectCategory.show', [$projectCategory->slug, 'danh-muc'])}}">{{$projectCategory->display_name}}</a></li>
                     @endforeach
                 </ul>
             </li>
             <li><a href="#">Blog <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-list">
                     @foreach(\App\Models\ArticleCategory::whereShow('Y')->orderBy('display_name','asc')->get() as $articleCategory)
-                    <li><a  href="{{route('web.article.show',[$articleCategory->slug,'blogs'])}}">{{$articleCategory->display_name}}</a></li>
+                    <li><a  href="{{route('web.articleCategory.show',[$articleCategory->slug,'chu-de'])}}">{{$articleCategory->display_name}}</a></li>
                     @endforeach
                 </ul>
             </li>

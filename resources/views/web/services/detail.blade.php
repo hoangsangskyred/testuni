@@ -38,7 +38,7 @@
                                         <div class="widget-post media">
                                             <img src="{{$article->avatar}}">
                                             <div class="media-body"><span class="post-meta-date"> <a href="#"> Ngày {{$article->created_at->format('d-m-Y')}}</a> </span>
-                                                <h5 class="entry-title"><a href="{{route('web.article.detail', ['slug'=>$article->slug])}}">{{$article->title}}</a></h5>
+                                                <h5 class="entry-title"><a href="{{route('web.article.detail', ['slug'=>$article->slug,'bai-viet'])}}">{{$article->title}}</a></h5>
                                             </div>
                                         </div>
                                         <!-- .widget-post END -->

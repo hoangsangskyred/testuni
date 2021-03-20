@@ -22,18 +22,18 @@ Route::name('web.')->group(function () {
     Route::get('/{slug}-{service}.html', [ServiceController::class, 'show'])
         ->where(['slug' => '(.*)', 'service' => '(service|dich-vu)'])
         ->name('service.detail');
-    Route::get('/{slug}-{project}.html', [ProjectController::class, 'category'])
-        ->where(['slug' => '(.*)', 'project' => 'project|du-an'])
-        ->name('project.show');
-    Route::get('/{slug}-{detail}.html', [ProjectController::class, 'detail'])
-        ->where(['slug' => '(.*)', 'project-detail' => 'project-detail|project-detail'])
+    Route::get('/{slug}-{projects}.html', [ProjectController::class, 'category'])
+        ->where(['slug' => '(.*)', 'projects' => '(projects|danh-muc)'])
+        ->name('projectCategory.show');
+    Route::get('/{slug}-{project}.html', [ProjectController::class, 'detail'])
+        ->where(['slug' => '(.*)', 'project' => '(project|du-an)'])
         ->name('project.detail'); 
     Route::get('/{slug}-{blogs}.html', [ArticleController::class, 'category'])
-        ->where(['slug' => '(.*)','blogs'=>'blogs|blogs'])
-        ->name('article.show');
-    Route::get('/{slug}-detail.html', [ArticleController::class, 'detail'])
-        ->where(['slug' => '(.*)', 'detail' => '(detail|detail)'])
-        ->name('article.detail'); 
+        ->where(['slug' => '(.*)','blogs'=>'(blogs|chu-de)'])
+        ->name('articleCategory.show');
+    Route::get('/{slug}-{blog}.html', [ArticleController::class, 'detail'])
+        ->where(['slug' => '(.*)', 'blog' => '(blog|bai-viet)'])
+        ->name('article.detail');
     Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contactUs');
     Route::Post('/contact-us', [ContactUsController::class, 'store'])->name('contactUs');
 });

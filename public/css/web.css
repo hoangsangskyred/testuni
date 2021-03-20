@@ -277,6 +277,20 @@ body.cke_editable {padding: 1rem !important;}
     transform: scale(1.05);
 
 }
+/*projects*/
+.projects img
+{
+    transition: transform .4s;
+    margin: 0 auto;
+}
+.projects img:hover
+{
+    -ms-transform: scale(1.05);
+    -webkit-transform: scale(1.05); 
+    transform: scale(1.05);
+
+}
+
 
 /*--gallery--*/
 
@@ -288,8 +302,6 @@ body.cke_editable {padding: 1rem !important;}
   padding: 0 3px;
 }
 
-
-/* Style the elements with an id. */
 /* The modal that houses the slideshow. */
 #slide-modal {
   display: none;
