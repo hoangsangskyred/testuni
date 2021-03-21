@@ -403,6 +403,12 @@ body.cke_editable {padding: 1rem !important;}
     {
         display: none;
     }
+    .service-wrap img
+    {
+        text-align: center;
+        overflow: hidden;
+        
+    }
 }
 @media screen and(min-width:576px)
 {
@@ -456,10 +462,11 @@ body.cke_editable {padding: 1rem !important;}
     .service-wrap{
       
     }
-    .service-wrap img
+    .service-wrap  .text-holder img
     {
         text-align: center;
         overflow: hidden;
+        width: calc(100%);
     }
     
    
@@ -486,17 +493,14 @@ body.cke_editable {padding: 1rem !important;}
     --smoke: whitesmoke;
     --dark-gray: #999;
 }
-nav.mobile::after
-{
-    clear: both;   
-}
+
 .nav-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(0, 0, 0, 0.66);
-    
+    background: rgba(0, 0, 0, 0.66); 
 }
+
 .topmobile
 {
     position: fixed;
@@ -526,7 +530,7 @@ nav.mobile::after
     margin-bottom: 0 !important;
 }
 .nav-wrapper ul.nav-list li {
-    margin-left: 30px;
+    margin-left: 20px;
     padding: 17px 10px 20px 10px;
     position: relative;
 }
@@ -535,18 +539,21 @@ nav.mobile::after
     color: var(--pure);
     text-decoration: none;
     letter-spacing: 1px;
-    transition: all .5s ease-in-out;
+    transition: all .1s ease-in-out;
     font-size: 16px;
 }
-
-.nav-wrapper ul.nav-list li a:hover, .nav-wrapper ul.nav-list li.active a {
+.nav-wrapper ul.nav-list li a:hover
+{
+    color: var(--primary);
+}
+.nav-wrapper ul.nav-list li:hover > a{
     color: var(--primary);
 }
 
 nav ul.dropdown-list {
     list-style-type: none;
     background: var(--smoke);
-    padding: 5px 16px;
+    padding: 0;
     position: absolute;
     width: max-content; 
     /*left: 50%;
@@ -557,16 +564,25 @@ nav ul.dropdown-list {
 
 .nav-wrapper ul.dropdown-list li {
     margin-left: 0;
-    padding: 0;
+    padding: 0.25rem 1rem;
 }
 
-.nav-wrapper ul.dropdown-list  li a {
-    color: var(--dark);
-} 
+.nav-wrapper ul.dropdown-list li:hover 
+{
+    background: var(--primary);
+}
+
+.nav-wrapper ul.dropdown-list li a {
+    color: var(--dark);    
+}
+.nav-wrapper ul.dropdown-list li:hover  a
+{
+    color:var(--pure);
+}
 
 .nav-wrapper ul.nav-list li:hover .dropdown-list {
     display: block;
-    animation: moveUp .5s ease-in-out  ;
+    animation: moveUp .1s ease-in-out  ;
     margin-top: 20px;
 }
 
@@ -599,13 +615,7 @@ nav ul.dropdown-list {
     margin-bottom: 8px;
 }
 
-.mobile ul.nav-list.open li
-{
-    padding: 10px;
-    bottom: 10px;
-}
 .mobile ul.nav-list {
-    background: -webkit-rgba(0, 0, 0, 0.66);
     background: rgba(0, 0, 0, 0.66);
     position: fixed;
     top: 112px;
@@ -615,6 +625,10 @@ nav ul.dropdown-list {
     padding: 10px;
     opacity: 0;
     pointer-events: none;
+    z-index: 999;
+}
+.mobile ul.nav-list li{
+    padding: 10px;
 }
 
 .mobile ul.nav-list.open::before {
@@ -627,6 +641,7 @@ nav ul.dropdown-list {
     position: absolute;
     top: -12px;
     right: 30px;
+  
 }
 .hamburger, .brand {
     z-index: 9999;
@@ -650,8 +665,6 @@ nav ul.dropdown-list {
 }
 .mobile ul.nav-list.open2 li
 {
-    padding: 10px;
-    margin: 5px 0;
     transition: all .3s ease-in-out ;
 }
 .mobile ul.nav-list.open2::before
@@ -678,7 +691,7 @@ nav ul.dropdown-list {
     text-align: center;
     height: 0;
     overflow-y: hidden;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.1s ease-in-out;
     padding: 0;
 }
 
@@ -701,9 +714,9 @@ nav ul.dropdown-list {
     padding: 0px 10px; 
 }
 
-.mobile .nav-wrapper ul.dropdown-list li a:hover
+.mobile .nav-wrapper ul.dropdown-list li:hover a
 {
-    color: var(--primary);
+    color: var(--pure);
 }
 .mobile .nav-wrapper ul.dropdown-list li a {
     color: var(--dark-gray);

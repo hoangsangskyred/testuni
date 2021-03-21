@@ -82,7 +82,7 @@
                             <div class="widget-posts">
                                 <ul class="list-group list-unstyled">
                                     @foreach($articleCategories as $category)
-                                     <li><a href="{{route('web.article.show', [$category->slug])}}">{{$category->display_name}}</a><span>({{$category->articles->count()}})</span></li>
+                                     <li><a href="{{route('web.articleCategory.show', [$category->slug,'chu-de'])}}">{{$category->display_name}}</a><span>({{$category->articles->count()}})</span></li>
                                     @endforeach
                                 </ul> 
                             </div>
