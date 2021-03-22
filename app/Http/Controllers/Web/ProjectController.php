@@ -9,19 +9,19 @@ use App\Models\Project;
 
 class ProjectController extends Controller
 {
-    public function category($slug, $type)
+    public function category($slug, $projects)
     {
-        $projectCategory = ProjectCategory::where('slug',$slug)->whereShow('Y')->first();
+        $projectCategory = ProjectCategory::where('slug',$slug)->where('show','Y')->first();
 
         if($projectCategory==null)
         {
             return abort(404);
         }
-        $needle = Project::with('category')->where('project_category_id',$projectCategory->id)->whereShow('Y')->get();
+        $needle = Project::with('category')->where('project_category_id',$projectCategory->id)->where('show','Y')->get();
 
-        $projectCategories = ProjectCategory::where('id','<>',$projectCategory->id)->whereShow('Y')->get();
+        $projectCategories = ProjectCategory::where('id','<>',$projectCategory->id)->where('show','Y')->get();
         
-        return view('web.projects.all', compact('needle','projectCategory','projectCategories'));
+        return view('web.projects.all', compact(['needle','projectCategory','projectCategories']));
     }
 
     public function detail($slug, $project)
@@ -32,7 +32,7 @@ class ProjectController extends Controller
 
         if ($needle==null)
         {
-            return abort('404');
+            return abort(404);
         }
         $projectImages = glob( public_path(str_replace('/public','',$project->folder_path)) . '/*.jpg');
 

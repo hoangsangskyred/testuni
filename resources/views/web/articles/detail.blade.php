@@ -33,7 +33,7 @@
                                 <div class="widget-posts">
                                     @foreach($articleRelation as $article)
                                     <div class="widget-post media">
-                                        <img src="{{$article->avatar}}">
+                                        <img src="{{$article->avatar_path}}" width="100px" height="75px">
                                         <div class="media-body"><span class="post-meta-date"> <a href="#"> Ngày {{$article->created_at->format('d-m-Y')}}</a> </span>
                                             <h5 class="entry-title"><a href="{{route('web.article.detail', ['slug'=>$article->slug, 'bai-viet'])}}">{{$article->title}}</a></h5>
                                         </div>

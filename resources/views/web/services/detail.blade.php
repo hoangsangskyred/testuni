@@ -14,7 +14,7 @@
             <div class="service-wrap">
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="text-holder">
+                        <div class="text-holder" style="width:100% ; hight:100%;">
                             {!! $needle->content !!}
                         </div>
                     </div>
@@ -33,10 +33,10 @@
                             <div class="widget">
                                 <h4 class="widget-title"><span class="light-text">Blog</span></h4>
                                 <div class="widget-posts">
-                                    @foreach(\App\Models\Article::where('show','Y')->limit(5)->get() as $article)
+                                    @foreach(\App\Models\Article::where('show','Y')->latest()->limit(5)->get() as $article)
                                         <!-- .widget-post START -->
                                         <div class="widget-post media">
-                                            <img src="{{$article->avatar}}">
+                                             <a href="{{route('web.article.detail', ['slug'=>$article->slug,'bai-viet'])}}"><img src="{{$article->avatar_path}}" width="100px" height="75px"></a>
                                             <div class="media-body"><span class="post-meta-date"> <a href="#"> Ngày {{$article->created_at->format('d-m-Y')}}</a> </span>
                                                 <h5 class="entry-title"><a href="{{route('web.article.detail', ['slug'=>$article->slug,'bai-viet'])}}">{{$article->title}}</a></h5>
                                             </div>

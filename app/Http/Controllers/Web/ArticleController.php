@@ -35,7 +35,7 @@ class ArticleController extends Controller
 
         $needle = Article::with('category')->whereSlug($slug)->whereShow('Y')->first();
         
-        $articleRelation = Article::with('category')->where('article_category_id',$needle->article_category_id)->where('slug','<>',$needle->slug)->get();
+        $articleRelation = Article::with('category')->where('article_category_id',$needle->article_category_id)->where('slug','<>',$needle->slug)->where('show','Y')->get();
 
         return view('web.articles.detail',compact(['article','needle','articleCategories','articleRelation']));
     }

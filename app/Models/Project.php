@@ -40,7 +40,10 @@ class Project extends Model
         $this->attributes['title'] = Str::title($value);
 
         $this->attributes['slug'] = implode('/', array_filter([$this->category->slug, Str::slug($this->attributes['title'])]));
+    }
 
+    public function projectimages(){
+        return $this->hasMany(ProjectImage::class,'project_id');
     }
     
 }

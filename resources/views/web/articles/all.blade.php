@@ -23,13 +23,16 @@
                                       <a href="{{route('web.article.detail', ['slug' => $article->slug, 'bai-viet'])}}"><h5 class="card-title">{!!trim(Str::limit($article->title, 70))!!}</h5></a>
                                       <span style="opacity: 0.7">Ngày đăng : {{$article->created_at->format('d-m-Y')}}</span>
                                       <p>{!!trim(Str::limit($article->content, 150))!!}</p>
-                                      <a href="{{route('web.article.detail', ['slug' => $article->slug, 'bai-viet'])}}" class="btn btn-secondary">Xem Thêm...</a>
+                                      <a href="{{route('web.article.detail', ['slug' => $article->slug, 'bai-viet'])}}" class="btn btn-secondary">Xem thêm...</a>
                                     </div>
-                                </div>
+                                </div>        
                             </div>
                             @empty
                             <h5 class="text-center">Hiện tại chưa có bài viết.<h5>
                             @endforelse
+                            <div class="pagination justify-content-center">
+                                {{$needle->links()}}   
+                            </div> 
                         </div>
                         
                     </div>
@@ -48,7 +51,7 @@
                                 <div class="widget-posts">
                                     @foreach(\App\Models\Article::where('show','Y')->latest()->limit(5)->get() as $article)
                                     <div class="widget-post media">
-                                        <img src="{{$article->avatar}}">
+                                        <a href="{{route('web.article.detail', [$article->slug, 'bai-viet'])}}"><img src="{{$article->avatar_path}}" width="100px" height="75px"></a>
                                         <div class="media-body"><span class="post-meta-date"> <a href="#"> Ngày {{$article->created_at->format('d-m-Y')}}</a> </span>
                                             <h5 class="entry-title"><a href="{{route('web.article.detail', [$article->slug, 'bai-viet'])}}">{{$article->title}}</a></h5>
                                         </div>

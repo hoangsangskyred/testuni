@@ -35,6 +35,9 @@
                 <li>
                     <a href="{{route('admin.projects.index')}}">Danh sách dự án</a>
                 </li>
+                <li>
+                    <a href="{{route('admin.projects-image.index')}}">Hình ảnh dự án nổi bật</a>
+                </li>
             </ul>
         </li>
         <li class="has-dropdown">

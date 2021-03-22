@@ -15,9 +15,9 @@
                 <div class="row">
                     <div class="col-lg-8">  
                         <div class="text-holder">
-                            <div class="content">
-                              {!! $needle->content !!}
-                            </div>
+                              <div class="content">
+                                {!! $needle->content !!}
+                              </div>      
                             <div class="main">
                               @foreach ($projectImages as $key => $item )
                                 <div class="column">
@@ -68,6 +68,7 @@
     </div>
     <!--Inner Content End-->
 
+@push('extra-scripts')
     <script>
     (function () {
   var modal = document.getElementById("slide-modal"),
@@ -196,4 +197,5 @@
     }
 }()); 
     </script>
+@endpush
 @stop

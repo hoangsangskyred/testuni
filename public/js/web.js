@@ -33,7 +33,7 @@ function addClassOpen()
             addRequiredClass();
         })
         function addRequiredClass() {
-            if (window.innerWidth < 860) {
+            if (window.innerWidth < 720) {
                 document.body.classList.add('mobile')
                 $('#navbar_top').addClass('topmobile');
             } else {
@@ -67,7 +67,7 @@ function addClassOpen()
             addRequiredClass();
         })
         function addRequiredClass() {
-            if (window.innerWidth < 860) {
+            if (window.innerWidth < 720) {
                 document.body.classList.add('mobile')
                 $('#navbar_top').addClass('topmobile');
             } else {
@@ -94,14 +94,10 @@ function addClassOpen()
     }
 }
 
-function switchStyle()
-{
-    
-}
+addClassOpen();
 
 $(document).ready(function (){
-  addClassOpen();
-  switchStyle();
+  
 });
 
 

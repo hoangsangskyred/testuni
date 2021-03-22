@@ -37,7 +37,7 @@
                                 <h4 class="widget-title"><span class="light-text">Danh mục dự án</span></h4>
                                 <ul class="list-group list-unstyled">
                                     @foreach($projectCategories as $category)
-                                    <li><a href="{{route('web.projectCategory.show', [$category->slug,'danh-muc'])}}">{{$category->display_name}}</a><span>{{$category->projects->where('show','Y')->count()}}</span></li>
+                                    <li><a href="{{route('web.projectCategory.show', [$category->slug,'danh-muc'])}}">{{$category->display_name}}</a><span>({{$category->projects->where('show','Y')->count()}})</span></li>
                                     @endforeach    
                                 </ul>
                             </div>
@@ -46,7 +46,7 @@
                                 <div class="widget-posts">
                                     @foreach(\App\Models\Article::where('show','Y')->latest()->limit(5)->get() as $article)
                                     <div class="widget-post media">
-                                        <img src="{{$article->avatar}}">
+                                        <img src="{{$article->avatar_path}}" width="100px" height="75px">
                                         <div class="media-body"><span class="post-meta-date"> <a href="#"> Ngày {{$article->created_at->format('d-m-Y')}}</a> </span>
                                             <h5 class="entry-title"><a href="{{route('web.article.detail', [$article->slug, 'bai-viet'])}}">{{$article->title}}</a></h5>
                                         </div>
