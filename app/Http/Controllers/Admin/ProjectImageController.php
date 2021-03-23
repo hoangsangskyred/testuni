@@ -17,28 +17,17 @@ class ProjectImageController extends Controller
 
     public function search(Request $request)
     {
-        $list = ProjectImage::orderBy('created_at','desc')
-        ->paginate(10);
-
-        return $list;
+       
     }
 
     public function index(Request $request)
     {
-        $this->setRedirectLink($request);
-        
-        $list = ProjectImage::orderBy('created_at','desc')
-        ->paginate(10);
-
-        return view($this->view . '.index', ['list' => $this->search($request)])
-            ->withController($this);       
+             
     }
 
     public function create()
     {
-        $needle = new ProjectImage();
-
-        return view($this->view.'.create',compact(['needle']))->withController($this);
+    
     }
 
     public function store(Request $request)

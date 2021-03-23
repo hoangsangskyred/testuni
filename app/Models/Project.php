@@ -41,9 +41,5 @@ class Project extends Model
 
         $this->attributes['slug'] = implode('/', array_filter([$this->category->slug, Str::slug($this->attributes['title'])]));
     }
-
-    public function projectimages(){
-        return $this->hasMany(ProjectImage::class,'project_id');
-    }
     
 }

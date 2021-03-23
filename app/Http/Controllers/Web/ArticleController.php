@@ -20,11 +20,11 @@ class ArticleController extends Controller
             return abort(404);
         }
 
-        $needle = Article::with('category')->where('article_category_id',$articleCatory->id)->whereShow('Y')->latest()->paginate(6);
+        $needle = $articleCatory->articles()->latest()->paginate(6);
         
-        $articleCategories = ArticleCategory::where('id','<>',$articleCatory->id)->whereShow('Y')->get();
+        $otherArticleCategories = ArticleCategory::where('id', '<>', $articleCatory->id)->whereShow('Y')->get();
        
-        return view('web.articles.all', compact('needle','articleCatory','articleCategories'));
+        return view('web.articles.all', compact('needle','articleCatory','otherArticleCategories'));
     }
 
     public function detail($slug, $blog)

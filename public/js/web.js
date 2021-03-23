@@ -96,8 +96,4 @@ function addClassOpen()
 
 addClassOpen();
 
-$(document).ready(function (){
-  
-});
-
 

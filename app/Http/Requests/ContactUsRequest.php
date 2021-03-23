@@ -25,7 +25,7 @@ class ContactUsRequest extends FormRequest
     {
         return [
             'full_name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'phone' =>'required'
         ];
     }
@@ -34,7 +34,7 @@ class ContactUsRequest extends FormRequest
     {
         return [
             'full_name.required' => 'Vui lòng cho biết Họ và tên',
-            'email.required' => 'Vui lòng cho biết email',
+            'email.required' => 'Email không hợp lệ',
             'phone.required' => 'Vui lòng cho biết số điện thoại'
         ];
     }

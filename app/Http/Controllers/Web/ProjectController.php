@@ -17,11 +17,12 @@ class ProjectController extends Controller
         {
             return abort(404);
         }
-        $needle = Project::with('category')->where('project_category_id',$projectCategory->id)->where('show','Y')->get();
-
-        $projectCategories = ProjectCategory::where('id','<>',$projectCategory->id)->where('show','Y')->get();
         
-        return view('web.projects.all', compact(['needle','projectCategory','projectCategories']));
+        $needle = $projectCategory->projects()->latest()->where('show','Y')->paginate(6);
+
+        $otherProjectCategories = ProjectCategory::where('id','<>',$projectCategory->id)->where('show','Y')->get();
+        
+        return view('web.projects.all', compact(['needle','projectCategory','otherProjectCategories']));
     }
 
     public function detail($slug, $project)

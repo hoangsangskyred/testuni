@@ -41,7 +41,7 @@
                             <div class="widget widget-categories">
                                 <h4 class="widget-title"><span class="light-text">Blog theo chủ đề</span></h4>
                                 <ul class="list-group list-unstyled">
-                                    @foreach($articleCategories as $category)
+                                    @foreach($otherArticleCategories as $category)
                                         <li><a href="{{route('web.articleCategory.show', [$category->slug, 'chu-de'])}}">{{$category->display_name}}</a><span>({{$category->articles->where('show','Y')->count()}})</span></li>
                                     @endforeach
                                 </ul>

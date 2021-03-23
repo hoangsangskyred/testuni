@@ -20,7 +20,6 @@ Route::resources([
     'articles' => ArticleController::class,
     'project-categories' => ProjectCategoryController::class,
     'projects' => ProjectController::class,
-    'projects-image'=> ProjectImageController::class,
     'about-us' => AboutUsController::class,
     'team-members' => TeamMemberController::class,
     'services' => ServiceController::class,

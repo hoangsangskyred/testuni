@@ -36,7 +36,7 @@
                             <div class="widget widget-categories">
                                 <h4 class="widget-title"><span class="light-text">Danh mục dự án</span></h4>
                                 <ul class="list-group list-unstyled">
-                                    @foreach($projectCategories as $category)
+                                    @foreach($otherProjectCategories as $category)
                                     <li><a href="{{route('web.projectCategory.show', [$category->slug,'danh-muc'])}}">{{$category->display_name}}</a><span>({{$category->projects->where('show','Y')->count()}})</span></li>
                                     @endforeach    
                                 </ul>

@@ -166,8 +166,7 @@
             <ul class="row">
                 @foreach($teamMembers as $teamMember)
                 <li class="col-md-3 col-sm-6">
-                    <div class="teamImg">
-                        <img src="{{$teamMember->avatar_path}}" alt="{{$teamMember->full_name}}">
+                    <div class="teamImg" style="background: url({{$teamMember->avatar_path}}) no-repeat center;">
                     </div>
                     <div class="teamInfo">
                         <h3>{{$teamMember->full_name}}</h3>
