@@ -20,7 +20,7 @@ class ServiceController extends Controller
     {
         $list = Service::orderBy('created_at', 'desc')
             ->paginate(20);
-
+            
         return $list;
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
+use App\Models\ArticleCategory;
 class ArticleRequest extends FormRequest
 {
     /**
@@ -37,7 +38,13 @@ class ArticleRequest extends FormRequest
         ];
     }
 
-    public function prepareForValidation(): void
+    public function category()
+    {
+        return $this->belongsTo(ArticleCategory::class, 'article_category_id')
+            ->withDefault(['display_name' => '-', 'slug' => null]);
+    }
+
+    public function prepareForValidation()
     {
         $this->merge([
             'show' => $this->has('show') ? 'Y' : 'N',

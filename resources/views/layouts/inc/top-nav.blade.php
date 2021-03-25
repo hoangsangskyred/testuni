@@ -15,7 +15,7 @@
             </li>
             <li> <a href="{{route('web.aboutUs')}}">Giới thiệu</a></li>
             <li>
-                <a href="#">Dịch Vụ <i class="fas fa-chevron-down"></i> </a>
+                <a href="{{route('web.services.show')}}">Dịch Vụ <i class="fas fa-chevron-down"></i> </a>
                 <ul class="dropdown-list">
                     @foreach(\App\Models\Service::whereShow('Y')->get() as $service)
                     <li><a  href="{{route('web.service.detail', [$service->slug, 'dich-vu'])}}">{{$service->title}}</a></li>
@@ -23,14 +23,14 @@
                 </ul>
             </li>
             <li>
-                <a href="#">Dự án <i class="fas fa-chevron-down"></i></a>
+                <a href="{{route('web.projects.show')}}">Dự án <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-list">
                     @foreach(\App\Models\ProjectCategory::whereShow('Y')->orderBy('display_name','asc')->get() as $projectCategory)
                     <li><a  href="{{route('web.projectCategory.show', [$projectCategory->slug, 'danh-muc'])}}">{{$projectCategory->display_name}}</a></li>
                     @endforeach
                 </ul>
             </li>
-            <li><a href="#">Blog <i class="fas fa-chevron-down"></i></a>
+            <li><a href="{{route('web.articles.show')}}">Blog <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-list">
                     @foreach(\App\Models\ArticleCategory::whereShow('Y')->orderBy('display_name','asc')->get() as $articleCategory)
                     <li><a  href="{{route('web.articleCategory.show',[$articleCategory->slug,'chu-de'])}}">{{$articleCategory->display_name}}</a></li>

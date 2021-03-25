@@ -19,9 +19,9 @@
                 <thead>
                 <tr>
                     <th>Code</th>
-                    <th>Tên hiển thị</th>
+                    <th width="200px">Tên hiển thị</th>
                     <th>Giá trị</th>
-                    <th>Ngày cập nhật</th>
+                    <th width="150px">Ngày cập nhật</th>
                 </tr>
                 <tbody>
                 @forelse($list as $item)

@@ -196,7 +196,10 @@ body.cke_editable {padding: 1rem !important;}
     margin-bottom: 25px;
     border-bottom: 1px solid #eee; }
 .sidebar-widgets .widget-posts .widget-post img {
-    padding-right: 17px; }
+    padding-right: 17px;
+    object-fit: cover; 
+
+}
 .sidebar-widgets .widget-posts .widget-post .img {
     width: 100px; height: 75px;
     background-repeat: no-repeat; background-size: cover; background-position: center center; background-color: #c0c0c0;}
@@ -265,6 +268,18 @@ body.cke_editable {padding: 1rem !important;}
     line-height: 26px;
 }
 /*-------Blogs*/
+
+h5.entry-title,h5.card-title
+{
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+} 
+h5.entry-title:hover,h5.card-title:hover
+{
+    color:#a58838 ;
+}
 .blogArticles img
 {
     transition: transform .4s;
@@ -278,6 +293,7 @@ body.cke_editable {padding: 1rem !important;}
 
 }
 /*projects*/
+
 .projects img
 {
     transition: transform .4s;
@@ -289,6 +305,10 @@ body.cke_editable {padding: 1rem !important;}
     -webkit-transform: scale(1.05); 
     transform: scale(1.05);
 
+}
+.duan-infor
+{
+    margin-bottom: 20px;
 }
 /*service*/
 .service-wrap  .text-holder .content img
@@ -306,6 +326,14 @@ body.cke_editable {padding: 1rem !important;}
     
 }
 /*--gallery--*/
+.demo-gallery
+{
+    display: flex;
+    flex-wrap: wrap;
+    display: -ms-flexbox;
+    -ms-flex-wrap: wrap;
+    padding: 0 3px;
+}
 .demo-gallery > ul {
     margin-bottom: 0;
     list-style: none;
@@ -315,6 +343,7 @@ body.cke_editable {padding: 1rem !important;}
       margin-bottom: 15px;
       margin-right: 20px;
       width: 200px;
+      height: auto;
   }
   .demo-gallery > ul > li a {
     border: 3px solid #FFF;
@@ -422,8 +451,14 @@ body.cke_editable {padding: 1rem !important;}
     padding-bottom: 80px;
   }
 
+  @media screen and (max-width: 550px) {
+    .demo-gallery > ul > li
+    {
+        width: 100%;
+    }
 
-
+    
+  }
 /*-----------@media---------------*/
 
 @media screen and(max-width:420px)
@@ -434,10 +469,6 @@ body.cke_editable {padding: 1rem !important;}
     .welcome-wrap .title h1{
         font-size: 20px;
     }
-    .teamImg
-    {
-        display: none;
-    }
     .service-wrap img
     {
         text-align: center;
@@ -445,8 +476,9 @@ body.cke_editable {padding: 1rem !important;}
         
     }
 }
-@media screen and(min-width:576px)
+@media screen and(max-width:550px)
 {
+   
 }
 @media screen and (max-width: 767px)
 {
@@ -467,7 +499,7 @@ body.cke_editable {padding: 1rem !important;}
 .teamImg
 {
     text-align: center;
-    padding: 10px;
+   /* padding: 10px;*/
 }
 }
 
@@ -493,6 +525,7 @@ body.cke_editable {padding: 1rem !important;}
     {
         text-align: center;
         overflow: hidden;
+        margin: 0 !important;
     }
     .service-wrap  .text-holder img
     {
@@ -500,6 +533,10 @@ body.cke_editable {padding: 1rem !important;}
         overflow: hidden;
         width: 100%;
         height: 100%;
+    }
+    .team-wrap ul {
+        margin: 0 auto;
+        padding-left: 0 !important;
     }
 } 
 
@@ -534,6 +571,7 @@ body.cke_editable {padding: 1rem !important;}
     justify-content: space-between;
     width: calc(100% - 1.5rem);
     z-index: 1000;
+    bottom: calc(100% - 4.5rem);
 }
 
 .brand {
@@ -631,7 +669,7 @@ nav ul.dropdown-list {
     cursor: pointer;
     position: fixed;
     right: 38px;
-    top: 60px;
+    bottom: calc(100% - 3.8rem);
 }
 .mobile .hamburger span {
     background: var(--pure);
@@ -643,7 +681,7 @@ nav ul.dropdown-list {
 .mobile ul.nav-list {
     background: rgba(0, 0, 0, 0.66);
     position: fixed;
-    top: 112px;
+    top: 80px;
     height: auto;
     display: flex;
     flex-direction: column;

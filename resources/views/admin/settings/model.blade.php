@@ -7,13 +7,10 @@
             <div class="invalid-feedback"><i class="fas fa-exclamation-circle"></i> Không được rỗng</div>
         </div>
 
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control text-capitalize" id="setting_value" name="setting_value" placeholder="Giá trị hiển thị" value="{{old('setting_value', $needle->setting_value)}}" required
-                   autofocus>
-            <label for="display_name">Giá trị hiển thị</label>
-            <div class="invalid-feedback"><i class="fas fa-exclamation-circle"></i> Không được rỗng</div>
+        <div class="form-group mb-3">
+            <label for="setting_value">Giá trị hiển thị</label>
+            <textarea class="form-control" id="setting_value" rows="5" name="setting_value" required>{{old('setting_value', $needle->setting_value)}}</textarea>
         </div>
-
         <div class="d-flex justify-content-between">
             <a href="{{ $controller->getRedirectLink() }}" class="btn btn-secondary">
                 Thoát

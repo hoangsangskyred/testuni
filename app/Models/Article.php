@@ -26,13 +26,13 @@ class Article extends Model
         'article_source_link',
     ];
     protected $attributes = [
-        'article_category_id' => 1,
+        'article_category_id' => 0,
         'title' => null,
         'description' => null,
         'content' => null,
     ];
 
-    public function category(): BelongsTo
+    public function category()
     {
         return $this->belongsTo(ArticleCategory::class, 'article_category_id')
             ->withDefault(['display_name' => '-', 'slug' => null]);
@@ -44,6 +44,7 @@ class Article extends Model
         $this->attributes['title'] = Str::title($value);
 
         $this->attributes['slug'] = implode('/', array_filter([$this->category->slug, Str::slug($this->attributes['title'])]));
+        
     }
     
 

@@ -1,5 +1,5 @@
 @extends('layouts.web')
-@push('page-title',$project->title )
+@push('page-title',$needle->title )
 @section('page-content')
     <div class="inner-heading">
         <div class="container">
@@ -22,7 +22,7 @@
                               <div class="demo-gallery">
                                 <ul id="lightgallery" class="list-unstyled row">
                                   @foreach ($projectImages as $key => $item )
-                                    <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="" data-src="{{str_replace([public_path(), '\/'], ['', '/public/'], $item)}}" data-sub-html="">
+                                    <li class="col-sm-6 col-md-4" data-responsive="" data-src="{{str_replace([public_path(), '\/'], ['', '/public/'], $item)}}" data-sub-html="">
                                         <a href="">
                                             <img class="img-responsive" src="{{str_replace([public_path(), '\/'], ['', '/public/'], $item)}}">
                                         </a>
@@ -36,6 +36,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="sidebar-widgets">
+                            @if($projectRelation->count() > 0)
                             <div class="widget widget-categories">
                                 <h4 class="widget-title"><span class="light-text">Dự án liên quan</span></h4>
                                 <div class="widget-posts">
@@ -49,14 +50,14 @@
                                   @endforeach
                               </div>
                             </div>
+                            @endif
                             <div class="widget">
                                 <h4 class="widget-title"><span class="light-text">Danh mục dự án</span></h4>
                                 <ul class="list-group list-unstyled">
                                   @foreach($projectCategories as $category)
-                                  <li><a href="{{route('web.projectCategory.show', [$category->slug,'danh-muc'])}}">{{$category->display_name}}</a><span>{{$category->projects->where('show','Y')->count()}}</span></li>
+                                  <li><a href="{{route('web.projectCategory.show', [$category->slug,'danh-muc'])}}">{{$category->display_name}}</a><span>({{$category->projects->where('show','Y')->count()}})</span></li>
                                   @endforeach
-                              </ul>
-                                
+                                </ul>     
                             </div>
                         </div>
                     </div>

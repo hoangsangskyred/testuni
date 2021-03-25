@@ -20,7 +20,7 @@
                                 <div class="card" style="overflow :hidden;">
                                     <a href="{{route('web.project.detail', ['slug'=>$projects->slug, 'du-an'])}}"><img class="card-img-top" src="{{$projects->avatar_path}}" alt=" " height="300px"></a>
                                     <div class="card-body px-2 mx-2"  style="height:100px;">    
-                                        <a href="{{route('web.project.detail', ['slug'=>$projects->slug, 'du-an'])}}">{{$projects->title}}</a>    
+                                        <a href="{{route('web.project.detail', ['slug'=>$projects->slug, 'du-an'])}}"><h5 class="entry-title">{{$projects->title}}</h5></a>    
                                     </div>
                                 </div>
                             </div>
@@ -28,8 +28,7 @@
                             <h5 class="text-center">Hiện tại chưa có bài viết.<h5>
                             @endforelse
                          
-                        </div>
-                        
+                        </div>  
                     </div>
                     <div class="col-lg-4">
                         <div class="sidebar-widgets">
@@ -45,8 +44,8 @@
                                 <h4 class="widget-title"><span class="light-text">Bài viết mới nhất</span></h4>
                                 <div class="widget-posts">
                                     @foreach(\App\Models\Article::where('show','Y')->latest()->limit(5)->get() as $article)
-                                    <div class="widget-post media">
-                                        <img src="{{$article->avatar_path}}" width="100px" height="75px">
+                                    <div class="widget-post media">      
+                                        <a href="{{route('web.article.detail', [$article->slug, 'bai-viet'])}}"><img src="{{$article->avatar_path}}" width="100px" height="75px"> </a>
                                         <div class="media-body"><span class="post-meta-date"> <a href="#"> Ngày {{$article->created_at->format('d-m-Y')}}</a> </span>
                                             <h5 class="entry-title"><a href="{{route('web.article.detail', [$article->slug, 'bai-viet'])}}">{{$article->title}}</a></h5>
                                         </div>

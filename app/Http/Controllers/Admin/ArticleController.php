@@ -83,7 +83,11 @@ class ArticleController extends Controller
     public function store(ArticleRequest $request)
     {
         $article = new Article( $request->all() );
-        
+
+        $slugCategory = ArticleCategory::find($request->article_category_id)->slug;
+
+        $article->slug = implode('/', array_filter([$slugCategory,Str::slug($request->title)]));
+
         $article->save();
        
         return redirect()->to( $this->getRedirectLink() )->withSuccess('Lưu dữ liệu thành công!');  
@@ -97,6 +101,10 @@ class ArticleController extends Controller
 
     public function update(ArticleRequest $request, Article $article)
     {
+        $slugCategory = ArticleCategory::find($request->article_category_id)->slug;
+
+        $article->slug = implode('/', array_filter([$slugCategory,Str::slug($request->title)]));
+        
         $article->update($request->all());
         
         return redirect()->to($this->getRedirectLink())->withSuccess('Lưu dữ liệu thành công!');

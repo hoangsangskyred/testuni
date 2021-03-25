@@ -20,6 +20,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="sidebar-widgets">
+                            @if($otherServices->count() > 0)
                             <div class="widget widget-categories">
                                 <h4 class="widget-title"><span class="light-text">Các dịch vụ khác</span></h4>
                                 <ul class="list-group list-unstyled">
@@ -28,6 +29,7 @@
                                     @endforeach
                                 </ul>
                             </div>
+                            @endif
                             <!-- .widget end -->
 
                             <div class="widget">

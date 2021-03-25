@@ -11,18 +11,26 @@
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
                     <li><a href="{{route('web.index')}}"><i class="fas fa-angle-right"></i>  Trang chủ </a></li>
-                    <li><a href="#"><i class="fas fa-angle-right"></i>  Giới thiệu</a></li>
-                    <li><a href="#"><i class="fas fa-angle-right"></i>  Dịch vụ</a></li>
-                    <li><a href="#"><i class="fas fa-angle-right"></i>  Dự án </a></li>
-                    <li><a href="#"><i class="fas fa-angle-right"></i>  Blog </a></li>
-                    <li><a href="#"><i class="fas fa-angle-right"></i>  Liên hệ </a></li>
+                    <li><a href="{{route('web.aboutUs')}}"><i class="fas fa-angle-right"></i>  Giới thiệu</a></li>
+                    <li><a href="{{route('web.services.show')}}"><i class="fas fa-angle-right"></i>  Dịch vụ</a></li>
+                    <li><a href="{{route('web.projects.show')}}"><i class="fas fa-angle-right"></i>  Dự án </a></li>
+                    <li><a href="{{route('web.articles.show')}}"><i class="fas fa-angle-right"></i>  Blog </a></li>
+                    <li><a href="{{route('web.contactUs')}}"><i class="fas fa-angle-right"></i>  Liên hệ </a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-12">
-                <h3>Thông tin liên lạc</h3>
-                <div class="footer-address"><i class="fas fa-map-marker-alt"></i>  1234 Lorem Road, ISpum A Kennesaw, GA 1234</div>
-                <div class="call-us"><a href="#"><i class="fas fa-phone-alt"></i>  (777) 123-4567</a></div>
-                <div class="fax"><a href="#"><i class="fas fa-fax"></i>  (777) 132-4567</a></div>
+                <h3>Thông tin liên lạc</h3>    
+                @if($address = App\Models\Setting::where('name','dia-chi')->first() )         
+                    <div class="footer-address"><i class="fas fa-map-marker-alt"></i>  {{ $address->setting_value}} </a></div>   
+                @endif
+
+                @if($phone = App\Models\Setting::where('name','dien-thoai')->first())
+                    <div class="call-us"><a href="#"><i class="fas fa-phone-alt"></i>  {{$phone->setting_value}}</a> </div>
+                @endif
+    
+                @if($fax = App\Models\Setting::where('name','fax')->first())
+                    <div class="fax"><a href="#"><i class="fas fa-fax"></i>  {{$fax->setting_value}}</a> </div>
+                @endif       
             </div>
             <div class="col-md-3 col-sm-4 col-xs-12">
                 <i>Nhúng fanpage tại đây</i>

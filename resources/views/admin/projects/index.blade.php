@@ -61,5 +61,7 @@
             </table>
         </div>
     </div>
-
+    <div class="pagination justify-content-center">
+        {{$list->links()}}   
+    </div>
 @stop

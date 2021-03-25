@@ -6,9 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProjectCategory;
 use App\Models\Project;
+use App\Models\ArticleCategory;
 
 class ProjectController extends Controller
 {
+    public function show()
+    {
+        $needle = Project::where('show','Y')->latest()->paginate(10);
+
+        $projectCategories = ProjectCategory::where('show','Y')->orderBy('display_name','asc')->get();
+
+        $articleCategorise = ArticleCategory::where('show','Y')->orderBy('display_name','asc')->get();
+
+        return view('web.projects.show',compact(['needle','projectCategories','articleCategorise']));
+    }
+
     public function category($slug, $projects)
     {
         $projectCategory = ProjectCategory::where('slug',$slug)->where('show','Y')->first();
@@ -27,20 +39,18 @@ class ProjectController extends Controller
 
     public function detail($slug, $project)
     {
-         $project = Project::where('slug',$slug)->whereShow('Y')->first();
-
-         $needle = Project::with('category')->whereSlug($slug)->whereShow('Y')->first();
+        $needle = Project::where('slug',$slug)->whereShow('Y')->first();
 
         if ($needle==null)
         {
             return abort(404);
         }
-        $projectImages = glob( public_path(str_replace('/public','',$project->folder_path)) . '/*.jpg');
+        $projectImages = glob( public_path(str_replace('/public','',$needle->folder_path)) . '/*.jpg');
 
-        $projectRelation = Project::with('category')->where('project_category_id',$needle->project_category_id)->where('slug','<>',$needle->slug)->where('show','Y')->get();
+        $projectCategories = ProjectCategory::where('id','<>',$needle->project_category_id)->where('show','Y')->get();
 
-        $projectCategories = ProjectCategory::where('id','<>',$project->project_category_id)->whereShow('Y')->get();
+        $projectRelation = Project::where('project_category_id',$needle->project_category_id)->where('slug','<>',$needle->slug)->where('show','Y')->get();
 
-        return view('web.projects.detail',compact(['project','needle','projectImages','projectRelation','projectCategories']));
+        return view('web.projects.detail',compact(['needle','projectImages','projectRelation','projectCategories']));
     }
 }

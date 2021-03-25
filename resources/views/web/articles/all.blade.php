@@ -1,5 +1,5 @@
 @extends('layouts.web')
-@push('page-title', $articleCatory->display_name)
+@push('page-title', $articleCategory->display_name)
 @section('page-content')
     <div class="inner-heading">
         <div class="container">

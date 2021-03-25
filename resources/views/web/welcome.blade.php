@@ -44,7 +44,11 @@
                 <div class="title">
                     <h1>Dự án <span>nổi bật</span></h1>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam nisi, sollicitudin venenatis nisl id, iaculis pharetra quam. Vivamus cursus est vel sagittis tristique. Nunc vel ligula mollis, imperdiet dolor quis, consectetur magna. Duis facilisis tempor lectus tempus dignissim.</p>
+                <div class="duan-infor">
+                @if($duan_infor = App\Models\Setting::where('name','noi-dung-gioi-thieu-du-an')->first())
+                    <p>{{$duan_infor->setting_value}}</p>
+                @endif    
+                </div>
             </div>
         </div>
         <div class="row gx-0">
@@ -125,7 +129,7 @@
                     <div class="title">
                         <h1><span>Chúc mừng đến với</span> UniqueHouse <strong>Architecture</strong></h1>
                     </div>
-                    <h3>Đơn vị tiên phong trong lĩnh vực thiết kế nội thất.</h3>
+                    <h3>Đơn vị tiên phong trong lĩnh vực thiết kế nội thất.</h3> 
                     <p>Với đội ngũ kỹ sư trẻ đầy sáng tạo và năng động, chúng tôi đã mang đến cho khách hàng những sản phẩm thiết kế vô cùng hiện đại, sang trọng, ...  </p>
                     <div class="welcome-content-box row">
                         <div class="col-md-4 col-sm-4 welcome-box">
@@ -161,13 +165,14 @@
             <div class="title">
                 <h1>Đội ngũ <span>Ưu tú</span></h1>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam nisi, sollicitudin venenatis nisl id, iaculis pharetra quam. Vivamus cursus est vel sagittis tristique. Nunc vel ligula mollis, imperdiet dolor quis, consectetur magna. Duis facilisis tempor lectus tempus dignissim.</p>
+            @if($teamMember = App\Models\Setting::where('name','noi-dung-gioi-thieu-team')->first())
+                      <p>{{$teamMember->setting_value}}</p>
+            @endif
             <div class="clearfix"></div>
             <ul class="row">
                 @foreach($teamMembers as $teamMember)
                 <li class="col-md-3 col-sm-6">
-                    <div class="teamImg" style="background: url({{$teamMember->avatar_path}}) no-repeat center;">
-                    </div>
+                    <div class="teamImg" style="background: url({{$teamMember->avatar_path}}) no-repeat center;"></div>
                     <div class="teamInfo">
                         <h3>{{$teamMember->full_name}}</h3>
                         <div class="designation">{{$teamMember->title}}</div>

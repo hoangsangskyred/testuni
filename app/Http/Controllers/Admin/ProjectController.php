@@ -7,11 +7,13 @@ use App\Http\Controllers\Traits\RedirectAfterSubmit;
 use App\Models\Article;
 use App\Models\ArticleSourceLink;
 use App\Models\Project;
+use App\Models\ProjectCategory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProjectRequest;
+use Illuminate\Support\Str;
 
 
 class ProjectController extends Controller
@@ -26,7 +28,7 @@ class ProjectController extends Controller
     {
         $list = Project::with('category')
             ->orderBy('created_at','desc')
-            ->paginate(20);
+            ->paginate(10);
         return $list;
     }
 
@@ -52,6 +54,10 @@ class ProjectController extends Controller
         $files = glob( public_path(str_replace('/public', '', $request->folder_path)) . '/*.jpg');
 
         $project->photo_count = Count($files);
+        
+        $slugCategory = ProjectCategory::find($request->project_category_id)->slug;
+
+        $project->slug = implode('/', array_filter([$slugCategory,Str::slug($request->title)]));
 
         $project->save();
 
@@ -72,6 +78,10 @@ class ProjectController extends Controller
 
         $project->photo_count = Count($files);
 
+        $slugCategory = ProjectCategory::find($request->project_category_id)->slug;
+
+        $project->slug = implode('/', array_filter([$slugCategory,Str::slug($request->title)]));
+        
         $project->save();
 
         return redirect()->to($this->getRedirectLink())->withSuccess('Lưu dữ liệu thành công!');   
